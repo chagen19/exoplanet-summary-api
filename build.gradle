@@ -1,0 +1,41 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.5.RELEASE'
+    id "io.spring.dependency-management" version "1.0.7.RELEASE"
+    id "io.freefair.lombok" version "3.6.4"
+    id 'java'
+    id 'idea'
+}
+repositories {
+    mavenCentral()
+}
+bootJar {
+    archiveFileName = 'exoplanet-summary-api'
+    version = '1.0.0'
+}
+lombok.config['lombok.anyConstructor.addConstructorProperties'] = 'true'
+
+sourceCompatibility = 12
+targetCompatibility = 12
+
+dependencies {
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
+    runtime("io.micrometer:micrometer-registry-prometheus")
+//    implementation("org.springframework.retry:spring-retry")
+    implementation("io.springfox:springfox-swagger2:2.9.2")
+    implementation("io.springfox:springfox-swagger-ui:2.9.2")
+    implementation("commons-beanutils:commons-beanutils:1.9.3")
+    implementation("javax.xml.bind:jaxb-api:2.3.1")
+    implementation("javax.activation:activation:1.1.1")
+    implementation("org.glassfish.jaxb:jaxb-runtime:2.3.1")
+    implementation("net.logstash.logback:logstash-logback-encoder:6.0")
+    implementation("net.rakugakibox.spring.boot:logback-access-spring-boot-starter:2.7.1")
+//    testImplementation('org.springframework.boot:spring-boot-starter-test')
+    testImplementation("org.junit.jupiter:junit-jupiter:5.4.2")
+}
+test {
+    useJUnitPlatform()
+    testLogging {
+        events 'PASSED', 'FAILED', 'SKIPPED'
+    }
+}

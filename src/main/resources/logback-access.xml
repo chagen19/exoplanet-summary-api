@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+    <appender class="ch.qos.logback.core.ConsoleAppender" name="RootConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.AccessEventCompositeJsonEncoder">
+            <providers>
+                <timestamp/>
+                <message/>
+                <method/>
+                <protocol/>
+                <statusCode/>
+                <requestedUrl/>
+                <requestedUri/>
+                <remoteHost/>
+                <remoteUser/>
+                <contentLength/>
+                <elapsedTime/>
+                <pattern>
+                    <pattern>
+                        {
+                        "referer": "#nullNA{%i{Referer}}",
+                        "user_agent": "#nullNA{%i{User-Agent}}",
+                        "type":"access-log",
+                        "tracing_id": "#nullNA{%responseHeader{tracing-id}}",
+                        "forwarded": "#nullNA{%i{Forwarded}}",
+                        "x_forwarded_for": "#nullNA{%i{X-Forwarded-For}}"
+                        }
+                    </pattern>
+                </pattern>
+            </providers>
+        </encoder>
+    </appender>
+    <appender-ref ref="RootConsoleAppender"/>
+</configuration>

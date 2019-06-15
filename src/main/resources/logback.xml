@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+
+    <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+        <resetJUL>true</resetJUL>
+    </contextListener>
+
+    <appender class="ch.qos.logback.core.ConsoleAppender" name="RootConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <timestamp/>
+                <logLevel/>
+                <threadName/>
+                <loggerName/>
+                <message/>
+                <throwableClassName>
+                    <useSimpleClassName>false</useSimpleClassName>
+                </throwableClassName>
+                <throwableRootCauseClassName>
+                    <useSimpleClassName>false</useSimpleClassName>
+                </throwableRootCauseClassName>
+                <stackTrace/>
+                <mdc/>
+                <contextName/>
+                <pattern>
+                    <pattern>
+                        {"type":"java" }
+                    </pattern>
+                </pattern>
+            </providers>
+        </encoder>
+    </appender>
+
+    <root level="${ENV_ROOT_LOGGER_LEVEL:-info}">
+        <appender-ref ref="RootConsoleAppender"/>
+    </root>
+
+</configuration>
