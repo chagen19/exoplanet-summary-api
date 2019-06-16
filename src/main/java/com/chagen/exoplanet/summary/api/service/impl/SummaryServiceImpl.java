@@ -44,7 +44,7 @@ public class SummaryServiceImpl implements SummaryService {
 	@Override
 	public String findPlanetWithHottestStar(List<Exoplanet> exoplanets) {
 		String planetIdentifier = "";
-		Optional<Exoplanet> first = exoplanets.stream().max(Comparator.comparingDouble(Exoplanet::getHostStarTempK));
+		Optional<Exoplanet> first = exoplanets.stream().max(Comparator.comparingLong(Exoplanet::getHostStarTempK));
 		if (first.isPresent()) {
 			planetIdentifier = first.get().getPlanetIdentifier();
 		}
@@ -71,7 +71,7 @@ public class SummaryServiceImpl implements SummaryService {
 	private String determineSize(Exoplanet exoplanet) {
 		int radiusJpt = Double.valueOf(exoplanet.getRadiusJpt()).intValue();
 		String size;
-		switch (radiusJpt) {
+		switch (radiusJpt > 0 ? radiusJpt: 0) {
 			case 0:
 				size = SMALL;
 				break;

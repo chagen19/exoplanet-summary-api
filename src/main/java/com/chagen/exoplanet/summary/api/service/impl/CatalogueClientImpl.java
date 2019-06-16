@@ -1,4 +1,4 @@
-package com.chagen.exoplanet.summary.api.client.impl;
+package com.chagen.exoplanet.summary.api.service.impl;
 
 import java.util.List;
 

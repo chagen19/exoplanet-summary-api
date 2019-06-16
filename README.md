@@ -7,7 +7,7 @@
 ### Steps  
 #### 1. Clone GIT Projects for POC  
 ```bash  
-git clone XXX Enter here  
+git clone git@github.com:chagen19/exoplanet-summary-api.git
 ```  
 #### 2. Start service  
 From project root run:

@@ -15,5 +15,5 @@ public class Exoplanet {
 	@JsonProperty("TypeFlag") private int typeFlag;
 	@JsonProperty("RadiusJpt") private double radiusJpt;
 	@JsonProperty("DiscoveryYear") private int discoveryYear;
-	@JsonProperty("HostStarTempK") private double hostStarTempK;
+	@JsonProperty("HostStarTempK") private long hostStarTempK;
 }
