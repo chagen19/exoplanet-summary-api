@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiResponses;
 		@ApiResponse(code = 500, message = "Unable to create summary data")
 })
 @RestController
-@RequestMapping("/exoplanets")
+@RequestMapping("/exoplanetSummary")
 public class SummaryController {
 
 	private final SummaryFacade summaryFacade;

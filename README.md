@@ -12,7 +12,7 @@ git clone git@github.com:chagen19/exoplanet-summary-api.git
 #### 2. Start service  
 From project root run:
 ```bash
-./gradlew bootRun
+./gradlew clean bootRun
 
 ```  
 
@@ -22,17 +22,17 @@ From project root run:
 ./gradlew clean test
 ```
  
-#### 4. Test the app 
+#### 3. Test the app 
 ```bash  
 # Examples using HTTPie. Substitute your favorite REST Client  
-http :8080/v1/exoplanets/liveness  
-http :8080/v1/exoplanets/readiness  
+http :8080/v1/exoplanetSummary/liveness  
+http :8080/v1/exoplanetSummary/readiness  
 # view configured properties and env variables  
 http :8080/v1/env  
 # view configured spring beans  
 http :8080/v1/beans  
 # retrieve exoplanets summary  
-http :8080/v1/exoplanets  
+http :8080/v1/exoplanetSummary  
 # view prometheus metrics  
 http :8080/v1/prometheus  
 ```  

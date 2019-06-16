@@ -12,4 +12,7 @@ public class CatalogueClientException extends RuntimeException {
 	public CatalogueClientException(String message, Throwable cause) {
 		super(message, cause);
 	}
+	public CatalogueClientException(String message) {
+		super(message);
+	}
 }

@@ -4,7 +4,6 @@
         <encoder class="net.logstash.logback.encoder.AccessEventCompositeJsonEncoder">
             <providers>
                 <timestamp/>
-                <message/>
                 <method/>
                 <protocol/>
                 <statusCode/>

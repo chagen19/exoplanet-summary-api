@@ -1,6 +1,5 @@
 package com.chagen.exoplanet.summary.api.facade.impl;
 
-import java.time.Instant;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +35,6 @@ public class SummaryFacadeImpl implements SummaryFacade {
 		long orphanCount = summaryService.getOrphanCount(exoplanets);
 		String planetWithHottestStart = summaryService.findPlanetWithHottestStar(exoplanets);
 		List<TimelineEntry> timeline = summaryService.createTimeline(exoplanets);
-		return new Summary(orphanCount, planetWithHottestStart, timeline, Instant.now());
+		return new Summary(orphanCount, planetWithHottestStart, timeline);
 	}
 }
