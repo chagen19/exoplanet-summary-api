@@ -21,7 +21,7 @@ Features include:
   
 #### Clone GIT Projects for POC  
 ```bash  
-git clone git@github.com:chagen19/exoplanet-summary-api.git
+git clone https://github.com/chagen19/exoplanet-summary-api.git
 ```
 
 ### Change to project directory
