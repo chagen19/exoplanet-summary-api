@@ -59,6 +59,8 @@ Docker Repo: https://cloud.docker.com/u/chagen19/repository/docker/chagen19/exop
 ```
  
 #### Test the app 
+Note: for minikube substitute `$(minikube ip):30217` for `:8080`
+*http $(minikube ip):30217/v1/exoplanetSummary*
 ```bash  
 # Examples using HTTPie. Substitute your favorite REST Client  
 http :8080/v1/exoplanetSummary/liveness  
