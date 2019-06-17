@@ -18,6 +18,13 @@ Features include:
 
 ### Requirements  
 * Java 11+ (latest version)
+
+**If you see this message on compile, you will need to update to later version of Java 11/12**
+```java
+compiler message file broken: key=compiler.misc.msg.bug arguments=11.0.3, {1}, {2}, {3}, {4}, {5}, {6}, {7}
+java.lang.NullPointerException
+
+```
   
 #### Clone GIT Projects for POC  
 ```bash  
