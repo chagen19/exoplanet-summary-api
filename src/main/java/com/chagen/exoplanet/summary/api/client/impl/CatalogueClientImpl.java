@@ -2,6 +2,8 @@ package com.chagen.exoplanet.summary.api.client.impl;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -9,6 +11,8 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.retry.annotation.Backoff;
+import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -23,6 +27,7 @@ import com.chagen.exoplanet.summary.api.model.Exoplanet;
  */
 @Component
 public class CatalogueClientImpl implements CatalogueClient {
+private static final Logger logger = LoggerFactory.getLogger(CatalogueClientImpl.class);
 
 	private final RestTemplate restTemplate;
 
@@ -32,8 +37,11 @@ public class CatalogueClientImpl implements CatalogueClient {
 	}
 
 	@Override
+	@Retryable(
+			value = { CatalogueClientException.class },
+			maxAttempts = 3,
+			backoff = @Backoff(delay = 500))
 	public List<Exoplanet> getCatalogue() {
-
 		ResponseEntity<List<Exoplanet>> response;
 		try {
 			response = restTemplate.exchange("/exoplanets", HttpMethod.GET, null, new ParameterizedTypeReference<>() {

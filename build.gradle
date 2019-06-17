@@ -6,25 +6,24 @@ plugins {
     id 'idea'
     id 'org.jetbrains.kotlin.jvm' version '1.3.31'
     id "org.jetbrains.kotlin.plugin.spring" version "1.3.31"
+    id "com.palantir.docker" version "0.22.1"
 }
 repositories {
     mavenCentral()
     maven { url "https://dl.bintray.com/spekframework/spek" }
 }
-bootJar {
-    archiveFileName = 'exoplanet-summary-api'
-    version = '1.0.0'
-}
+
 lombok.config['lombok.anyConstructor.addConstructorProperties'] = 'true'
 
-sourceCompatibility = 12
-targetCompatibility = 12
+sourceCompatibility = 11
+targetCompatibility = 11
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     runtime("io.micrometer:micrometer-registry-prometheus")
-//    implementation("org.springframework.retry:spring-retry")
+    implementation("org.springframework.retry:spring-retry")
+    runtime('org.springframework.boot:spring-boot-starter-aop')
     implementation("io.springfox:springfox-swagger2:2.9.2")
     implementation("io.springfox:springfox-swagger-ui:2.9.2")
     implementation("commons-beanutils:commons-beanutils:1.9.3")
@@ -60,4 +59,15 @@ compileTestKotlin {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+}
+
+task unpack(type: Copy) {
+    dependsOn bootJar
+    from(zipTree(tasks.bootJar.outputs.files.singleFile))
+    into("build/dependency")
+}
+docker {
+    name "${project.group}19/${project.name}:${project.version}"
+    copySpec.from(tasks.unpack.outputs).into("dependency")
+    buildArgs(['DEPENDENCY': "dependency"])
 }
