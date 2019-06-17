@@ -17,9 +17,11 @@ Features include:
 * Docker and Kubernetes deployment methods
 
 ### Requirements  
-* Java 11+ (latest version)
+* Java 12
 
-**If you see this message on compile, you will need to update to later version of Java 11/12**
+**If you see this message on compile, you will need to update to Java 12**
+
+I believe it's related to this bug here, which isn't fixed as of openjdk 11.0.3: https://bugs.openjdk.java.net/browse/JDK-8222754
 ```java
 compiler message file broken: key=compiler.misc.msg.bug arguments=11.0.3, {1}, {2}, {3}, {4}, {5}, {6}, {7}
 java.lang.NullPointerException
