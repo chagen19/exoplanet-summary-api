@@ -10,14 +10,14 @@ Features include:
 * Custom health indicators
 * Liveness/Readiness endpoints
 * Access logging
-* Project lombock for value and data objects
+* Project Lombock for value and data objects
 * Kotlin, JUnit5, Spek2, Spring controller/client tests
-* Distroless base image usage for Docker container
+* Distroless base Docker image
 * Gradle build pluging for docker builds
 * Docker and Kubernetes deployment methods
 
 ### Requirements  
-* Java 11+
+* Java 11+ (latest version)
   
 #### Clone GIT Projects for POC  
 ```bash  
@@ -35,10 +35,11 @@ cd exoplanet-summary-api
 minikube start
 # deploy the manifest
 kubectl apply -f manifest.yaml 
+# tear down
+kubectl delete -f manifest.yaml
 ```
 
 #### Run the service (Docker) 
-Distroless Docker container
 ```bash
 # Build the image locally (optional)
 ./gradlew build docker
