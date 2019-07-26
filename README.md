@@ -61,6 +61,8 @@ Docker Repo: https://cloud.docker.com/u/chagen19/repository/docker/chagen19/exop
 ```bash
 ./gradlew clean bootRun
 ```  
+#### Start Redis
+`docker run --name some-redis -d redis`
 
 #### Run Tests  
 ```bash
@@ -86,3 +88,10 @@ http :8080/v1/prometheus
   
 #### Swagger Docs  
 http://localhost:8080/v1/swagger-ui.html  
+
+#### Pipeline Steps
+./gradlew clean build
+./gradlew clean test
+For some reason the test runner doesn't tell you this, but it produces an HTML report in build/reports/tests/test/index.html.
+
+./gradlew -Pversion=1.0.6 docker

@@ -64,7 +64,7 @@ compileTestKotlin {
 task unpack(type: Copy) {
     dependsOn bootJar
     from(zipTree(tasks.bootJar.outputs.files.singleFile))
-    into("build/dependency")
+    into("build/uncompressed")
 }
 docker {
     name "${project.group}19/${project.name}:${project.version}"
